@@ -1,5 +1,10 @@
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { decrement, increment, selectCount } from "@/store/slices/counterSlice";
+import {
+  decrement,
+  fetchContent,
+  incrementByAmount,
+  selectCount,
+} from "@/store/slices/counterSlice";
 import { Box, Button, Typography } from "@mui/material";
 
 const reduxTest = () => {
@@ -33,12 +38,19 @@ const reduxTest = () => {
           variant="contained"
           sx={{ mr: 3 }}
           onClick={() => {
-            return dispatch(increment());
+            return dispatch(incrementByAmount(100));
           }}
         >
           increment
         </Button>
-        <Button variant="contained">fetch</Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            dispatch(fetchContent());
+          }}
+        >
+          fetch
+        </Button>
       </Box>
     </Box>
   );
